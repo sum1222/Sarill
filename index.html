@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Sistem Hatası</title>
+<title>Sistem Hatası ve Çözüm</title>
 <style>
   body {
     background-color: #000;
@@ -17,13 +17,14 @@
     overflow: hidden;
     user-select: none;
     -webkit-user-select: none;
+    transition: background-color 2s ease; /* Renk geçişi yumuşak olsun */
   }
 
   /* --- BÖLÜM 1: GİRİŞ EKRANI --- */
   #girisEkran {
     text-align: center;
-    transition: opacity 0.5s;
     width: 90%;
+    transition: opacity 0.5s;
   }
 
   .kalp-btn {
@@ -33,17 +34,19 @@
     cursor: pointer;
     animation: atis 1s infinite;
     margin: 20px 0;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
   }
 
   @keyframes atis {
     0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
+    50% { transform: scale(1.1); }
     100% { transform: scale(1); }
   }
 
   .progress-container {
     width: 100%;
-    height: 30px;
+    height: 25px;
     background-color: #333;
     border-radius: 15px;
     overflow: hidden;
@@ -67,20 +70,18 @@
     padding: 20px;
     background: rgba(20, 0, 0, 0.95);
     box-shadow: 0 0 50px red;
-    width: 90%;
-    position: relative;
-    z-index: 99;
+    width: 85%;
+    z-index: 10;
   }
 
   .glitch {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
     text-transform: uppercase;
-    animation: titreme 0.2s infinite;
-    margin-bottom: 20px;
+    animation: titreme 0.1s infinite;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px #000;
   }
-
-  .emoji-row { font-size: 40px; margin: 10px 0; }
 
   @keyframes titreme {
     0% { transform: translate(2px, 2px); }
@@ -90,16 +91,51 @@
     100% { transform: translate(2px, 2px); }
   }
 
-  h3 { font-size: 18px; line-height: 1.5; color: white; text-shadow: 0 0 5px red; }
+  .cozum-btn {
+    margin-top: 20px;
+    padding: 15px 20px;
+    font-size: 16px;
+    background-color: white;
+    color: red;
+    border: 2px solid red;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    animation: none; /* Titremesin, okunsun */
+  }
+
+  /* --- BÖLÜM 3: MUTLU SON (Huzur Ekranı) --- */
+  #sonucEkran {
+    display: none;
+    text-align: center;
+    color: #5d4037; /* Sıcak kahve tonu */
+    width: 90%;
+    animation: fadeIn 3s;
+  }
   
-  .uyari { color: #ff3333; font-weight: bold; text-decoration: underline; }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .huzur-yazi {
+    font-family: 'Verdana', sans-serif;
+    font-size: 28px;
+    margin: 20px 0;
+    font-weight: bold;
+  }
+  
+  .alt-yazi {
+    font-size: 20px;
+    margin-top: 30px;
+  }
 
 </style>
 </head>
 <body>
 
   <div id="girisEkran">
-    <h2>Bana ne kadar sarılmak istiyorsun?</h2>
+    <h3>Bana ne kadar sarılmak istiyooo</h3>
     <p>(Göstermek için Kalbe Basılı Tut)</p>
     
     <button class="kalp-btn" id="kalpButon">❤️</button>
@@ -111,23 +147,25 @@
   </div>
 
   <div id="hataEkran">
-    <div class="glitch">⚠️ SYSTEM FAILURE ⚠️</div>
+    <div class="glitch">⚠️ SİSTEM ÇÖKTÜ ⚠️</div>
     <div class="glitch">SEVGİ AŞIMI!</div>
     
-    <hr style="border-color: red;">
+    <p style="color:white; font-size:14px;">İŞLEMCİ YANDI. ACİL MÜDAHALE GEREKİYOR VE TEK ÇÖZÜM.</p>
     
-    <div class="emoji-row">🐻 ❤️ 🐰</div>
+    <div style="font-size: 40px; margin: 10px;">🐻 ❤️ 🐰</div>
     
-    <h3>SİSTEM ÇÖKTÜ KANKA!</h3>
-    <h3>BU KADAR ÖZLEM İŞLEMCİYİ YAKTI.</h3>
-    <br>
-    <h3><span class="uyari">ÇÖZÜM:</span><br>
-    DAHA ÇOK SARILMAN LAZIM.<br>
-    SIMSIKI.<br>
-    VE HEMEN <span style="color:#ff69b4">AYI VE TAVŞANI (BİZİ)</span><br>
-    YANINA ALMAN LAZIM!</h3>
+    <h3 style="color:white">ÇÖZÜM:</h3>
+    <p style="color:white">HEMEN AYI VE TAVŞANI YANINA ALIP SIMSIKI SARILMAK☝🏻</p>
     
-    <div class="glitch" style="margin-top: 20px; font-size: 40px;">🚨</div>
+    <button class="cozum-btn" onclick="mutluSon()">YANINA ALDI VE SARILDI ✅</button>
+  </div>
+
+  <div id="sonucEkran">
+    <div style="font-size: 60px;">✨🐻🐰,🦊🐱✨</div>
+    
+    <div class="huzur-yazi">GÜVENLİ.<br>SICAK.<br>YUMUŞAK.</div>
+    
+    <div class="alt-yazi">Seni çok seviyorum askşmm sevgiler günümüz kutlu olsun<br>❤️</div>
   </div>
 
 <script>
@@ -135,52 +173,52 @@
   let yuzdeText = document.getElementById('yuzdeText');
   let giris = document.getElementById('girisEkran');
   let hata = document.getElementById('hataEkran');
+  let sonuc = document.getElementById('sonucEkran');
   let buton = document.getElementById('kalpButon');
   
   let width = 0;
   let interval;
-  let sesCikart = false; // Tarayıcı izin verirse
 
-  // Basılı tutma olayları (Hem dokunmatik hem mouse için)
-  buton.addEventListener('mousedown', baslat);
-  buton.addEventListener('touchstart', baslat);
-  
-  buton.addEventListener('mouseup', durdur);
-  buton.addEventListener('mouseleave', durdur);
-  buton.addEventListener('touchend', durdur);
-
+  // -- Basılı Tutma Mantığı --
   function baslat(e) {
-    if(e) e.preventDefault(); // Telefondaki seçme özelliğini kapat
-    
+    if(e) e.preventDefault(); 
     interval = setInterval(function() {
       if (width >= 100) {
-        patlat();
+        kaosModu();
       } else {
         width++;
         bar.style.width = width + '%';
         yuzdeText.innerText = '%' + width;
       }
-    }, 40); // Dolma hızı (düşürürsen hızlanır)
+    }, 40); 
   }
 
-  function durdur() {
-    clearInterval(interval);
-    // İstersen elini çekince geri düşsün:
-    // width = 0; bar.style.width = '0%'; yuzdeText.innerText = '%0';
-  }
+  function durdur() { clearInterval(interval); }
 
-  function patlat() {
+  buton.addEventListener('mousedown', baslat);
+  buton.addEventListener('touchstart', baslat);
+  buton.addEventListener('mouseup', durdur);
+  buton.addEventListener('mouseleave', durdur);
+  buton.addEventListener('touchend', durdur);
+
+  // -- KAOS MODU (Kırmızı Ekran) --
+  function kaosModu() {
     clearInterval(interval);
-    giris.style.opacity = '0';
+    giris.style.display = 'none';
+    hata.style.display = 'block';
+    document.body.style.backgroundColor = '#200000'; // Koyu Kırmızı
     
-    setTimeout(() => {
-      giris.style.display = 'none';
-      hata.style.display = 'block';
-      document.body.style.backgroundColor = '#1a0000'; // Arka plan koyu kırmızı
-      
-      // Telefon titretme (Android destekler)
-      if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 500]);
-    }, 500);
+    if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 500]);
+  }
+
+  // -- MUTLU SON (Huzur Modu) --
+  function mutluSon() {
+    hata.style.display = 'none';
+    sonuc.style.display = 'block';
+    
+    // Arkaplanı yumuşak bir gün batımı rengine çevir
+    document.body.style.background = "linear-gradient(to bottom, #ffecd2 0%, #fcb69f 100%)";
+    document.body.style.color = "#5d4037"; // Yazı rengini yumuşat
   }
 </script>
 
